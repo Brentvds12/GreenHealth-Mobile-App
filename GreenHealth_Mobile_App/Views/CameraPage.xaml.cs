@@ -26,7 +26,11 @@ namespace GreenHealth_Mobile_App
 
             var stream = await result.OpenReadAsync();
 
-            resultImage.Source = ImageSource.FromStream(() => stream);
+            if(stream != null)
+            {
+                resultImage.Source = ImageSource.FromStream(() => stream);
+                ConfirmButton.IsVisible = true;
+            }
         }
 
         async void MakeButton_Clicked(System.Object sender, System.EventArgs e)
@@ -35,7 +39,16 @@ namespace GreenHealth_Mobile_App
 
             var stream = await result.OpenReadAsync();
 
-            resultImage.Source = ImageSource.FromStream(() => stream);
+            if (stream != null)
+            {
+                resultImage.Source = ImageSource.FromStream(() => stream);
+                ConfirmButton.IsVisible = true;
+            }
+        }
+
+        private void ConfirmButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
