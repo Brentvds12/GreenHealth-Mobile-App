@@ -22,7 +22,7 @@ namespace GreenHealth_Mobile_App
             bool isEmailEmpty = string.IsNullOrEmpty(emailEntry.Text);
             bool isPasswordEmpty = string.IsNullOrEmpty(passwordEntry.Text);
 
-            LoginProvider provider = new LoginProvider();
+            RestService restService = new RestService();
 
             if (isEmailEmpty || isPasswordEmpty)
             {
@@ -30,7 +30,7 @@ namespace GreenHealth_Mobile_App
             }
             else
             {
-                await provider.LoginAsync(emailEntry.Text, passwordEntry.Text);
+                await restService.LoginAsync(emailEntry.Text, passwordEntry.Text);
                 await Navigation.PushAsync(new MenuPage());
             }
         }
