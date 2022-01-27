@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GreenHealth_Mobile_App.PlantDetailPage"
+             x:Class="GreenHealth_Mobile_App.ProfilePage"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This is the Plant Detail Page"/>
+            <Label Text="This is the Profile Page"
+                   TextColor="Black"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

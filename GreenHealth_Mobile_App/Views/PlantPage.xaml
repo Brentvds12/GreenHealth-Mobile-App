@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:GreenHealth_Mobile_App.ViewModels"
+             x:Class="GreenHealth_Mobile_App.PlantPage"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <ViewModels:TestViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <ScrollView>
+                    <Grid>
+                        <Label Text="This is the Plant Page"
+                               TextColor="Black"/>
+                        <CollectionView ItemsSource="{Binding Plants}" SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Margin="15" Padding="0">
+                                        <Label Text="{Binding Location}" TextColor="Black"/>
+                                        <Label Text="{Binding Timestamp}" TextColor="Black"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
