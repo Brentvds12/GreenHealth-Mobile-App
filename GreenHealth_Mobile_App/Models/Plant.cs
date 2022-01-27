@@ -13,4 +13,9 @@ namespace GreenHealth_Mobile_App.Models
 		public string Timestamp { get; set; }
 		public string ImagePath { get; set; }
 	}
+
+	public class PlantResponse
+    {
+		public IList<Plant> plants { get; set; }
+    }
 }
