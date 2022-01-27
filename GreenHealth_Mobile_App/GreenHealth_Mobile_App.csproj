@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\ProximaNova-Black.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-Bold.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-BoldIt.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-Extrabld.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-Light.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-LightIt.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-Regular.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-RegularIt.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-Semibold.otf" />
+    <None Remove="Resources\Fonts\ProximaNova-SemiboldIt.otf" />
+    <None Remove="Resources\Fonts\vicons.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-RegularIt.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-Black.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-BoldIt.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-Extrabld.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-Light.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-LightIt.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-Semibold.otf" />
+    <EmbeddedResource Include="Resources\Fonts\ProximaNova-SemiboldIt.otf" />
+    <EmbeddedResource Include="Resources\Fonts\vicons.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Resources\Fonts\ProximaNova-Bold.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PlantDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PlantPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenHealth_Mobile_App.MainPage"
+             BackgroundColor="White">
+
+    <StackLayout Margin="15"
+                 VerticalOptions="Center">
+        <Frame BackgroundColor="#81BB26" Padding="24" CornerRadius="0">
+            <Label Text="Vito Analysing App" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Entry x:Name="emailEntry"
+               Margin="15"
+               Keyboard="Email"
+               Placeholder="Email"
+               PlaceholderColor="Black"
+               TextColor="Black"/>
+        <Entry x:Name="passwordEntry"
+               Margin="15"
+               IsPassword="True"
+               Placeholder="Password"
+               PlaceholderColor="Black"
+               TextColor="Black"/>
+        <Button x:Name="loginButton"
+                Margin="15"
+                Text="Login"
+                BackgroundColor="#81BB26"
+                TextColor="White"
+                Clicked="loginButton_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
