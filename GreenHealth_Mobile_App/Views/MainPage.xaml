@@ -7,7 +7,11 @@
     <StackLayout Margin="15"
                  VerticalOptions="Center">
         <Frame BackgroundColor="#81BB26" Padding="24" CornerRadius="0">
-            <Label Text="Vito Analysing App" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Vito Analysing App"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="36"
+                   FontFamily="PN-Boldlt"/>
         </Frame>
         <Entry x:Name="emailEntry"
                Margin="15"
