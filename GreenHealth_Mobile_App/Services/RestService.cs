@@ -4,10 +4,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GreenHealth_Mobile_App.Services
 {
@@ -21,7 +23,6 @@ namespace GreenHealth_Mobile_App.Services
             var tempClient = new HttpClient();
 
             string jsonData = @"{""email"" : """ + email + @""", ""password"" : """ + password + @"""}";
-            Console.WriteLine(jsonData);
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await tempClient.PostAsync(baseUrl + "user/authenticate", content);
@@ -53,8 +54,39 @@ namespace GreenHealth_Mobile_App.Services
             return plants;
         }
 
-        public Task<Plant> PatchPlant(int id, IFormFile image)
+        public async Task<Plant> PatchPlant(int id, Stream stream)
         {
+            using (var formContent = new MultipartFormDataContent("NKdKd9Yk"))
+            {
+                formContent.Headers.ContentType.MediaType = "multipart/form-data";
+                
+                formContent.Add(new StreamContent(stream));
+
+                using (_client)
+                {
+                    try
+                    {
+                        var method = new HttpMethod("PATCH");
+
+                        var request = new HttpRequestMessage(method, baseUrl + id + "/image")
+                        {
+                            Content = new StringContent(
+                                            JsonConvert.SerializeObject(formContent),
+                                            Encoding.UTF8, "application/json")
+                        };
+
+                        var response = await _client.SendAsync(request);
+                        var result = await response.Content.ReadAsStringAsync();
+
+                        Plant plantResult = JsonConvert.DeserializeObject<Plant>(result);
+                        return plantResult;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
             throw new NotImplementedException();
         }
 

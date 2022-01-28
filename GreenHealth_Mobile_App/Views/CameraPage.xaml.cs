@@ -1,5 +1,8 @@
-﻿using System;
+﻿using GreenHealth_Mobile_App.Models;
+using GreenHealth_Mobile_App.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,7 @@ namespace GreenHealth_Mobile_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CameraPage : ContentPage
     {
+        public Stream savedStream;
         public CameraPage()
         {
             InitializeComponent();
@@ -29,6 +33,7 @@ namespace GreenHealth_Mobile_App
             if(stream != null)
             {
                 resultImage.Source = ImageSource.FromStream(() => stream);
+                savedStream = stream;
                 ConfirmButton.IsVisible = true;
             }
         }
@@ -42,13 +47,18 @@ namespace GreenHealth_Mobile_App
             if (stream != null)
             {
                 resultImage.Source = ImageSource.FromStream(() => stream);
+                savedStream = stream;
                 ConfirmButton.IsVisible = true;
             }
         }
 
-        private void ConfirmButton_Clicked(object sender, EventArgs e)
+        async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
+            RestService restService = new RestService();
 
+            Plant plant = new Plant(1);
+            Plant newPlant = await restService.PostPlant(plant);
+            Plant resultplant = await restService.PatchPlant(newPlant.Id, savedStream);
         }
     }
 }
