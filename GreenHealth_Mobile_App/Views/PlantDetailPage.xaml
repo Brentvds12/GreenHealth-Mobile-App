@@ -11,7 +11,7 @@
         <StackLayout>
             <ScrollView>
                 <Grid>
-                    <Label Text="This is the Plant Detail Page"/>
+                    <Image x:Name="plantImage"/>
                 </Grid>
             </ScrollView>
         </StackLayout>

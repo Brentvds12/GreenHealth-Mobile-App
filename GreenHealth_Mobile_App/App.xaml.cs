@@ -15,6 +15,7 @@ namespace GreenHealth_Mobile_App
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
