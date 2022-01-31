@@ -26,12 +26,16 @@ namespace GreenHealth_Mobile_App
 
             if (isEmailEmpty || isPasswordEmpty)
             {
-                //no login
+                await DisplayAlert("Fout", "Email of Wachtwoord is leeg", "OK");
             }
             else
             {
-                await restService.LoginAsync(emailEntry.Text, passwordEntry.Text);
-                await Navigation.PushAsync(new MenuPage());
+                bool loginSuccess = await restService.LoginAsync(emailEntry.Text, passwordEntry.Text);
+                if (loginSuccess)
+                {
+                    await Navigation.PushAsync(new MenuPage());
+                }
+                else await DisplayAlert("Fout", "Email of Wachtwoord is fout", "OK");
             }
         }
     }
