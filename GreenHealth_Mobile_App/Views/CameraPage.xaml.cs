@@ -58,7 +58,8 @@ namespace GreenHealth_Mobile_App
 
             Plant plant = new Plant(1);
             Plant newPlant = await restService.PostPlant(plant);
-            Plant resultplant = await restService.PatchPlant(newPlant.Id, savedStream);
+            Plant resultPlant = await restService.PatchPlant(newPlant.Id, savedStream);
+            await Navigation.PushAsync(new PlantDetailPage(resultPlant));
         }
     }
 }

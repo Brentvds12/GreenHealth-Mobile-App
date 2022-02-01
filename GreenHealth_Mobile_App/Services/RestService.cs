@@ -41,7 +41,7 @@ namespace GreenHealth_Mobile_App.Services
         }
 
         // Functie om alle planten op te vragen.
-        public async Task<List<Plant>> GetPlants()
+        public async Task<List<Plant>> GetPlants(int userId)
         {
             List<Plant> plants = new List<Plant>();
             HttpClient client = new HttpClient();
@@ -49,7 +49,7 @@ namespace GreenHealth_Mobile_App.Services
 
             using (client)
             {
-                HttpResponseMessage response = await client.GetAsync(baseUrl + "plants");
+                HttpResponseMessage response = await client.GetAsync(baseUrl + "Users/" + userId + "/plants");
                 var json = await response.Content.ReadAsStringAsync();
 
                 var plantsResponse = JsonConvert.DeserializeObject<PlantResponse>(json);
@@ -58,6 +58,23 @@ namespace GreenHealth_Mobile_App.Services
             }
 
             return plants;
+        }
+
+        // Functie om een specifieke plant op te vragen
+        public async Task<Plant> GetPlant(int plantId)
+        {
+            Plant plant;
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
+
+            using (client)
+            {
+                HttpResponseMessage response = await client.GetAsync(baseUrl + "Plants/" + plantId);
+                var json = await response.Content.ReadAsStringAsync();
+
+                plant = JsonConvert.DeserializeObject<Plant>(json);
+            }
+            return plant;
         }
 
         // Functie om een afbeelding aan een plant toe te voegen.

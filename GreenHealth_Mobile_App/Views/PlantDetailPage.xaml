@@ -5,13 +5,14 @@
              x:Class="GreenHealth_Mobile_App.PlantDetailPage"
              BackgroundColor="White">
     <ContentPage.BindingContext>
-        <ViewModels:TestViewModel/>
+        <ViewModels:BaseViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
                 <Grid>
                     <Image x:Name="plantImage"/>
+                    <Label Text="{Binding Result}" TextColor="Black"/>
                 </Grid>
             </ScrollView>
         </StackLayout>
