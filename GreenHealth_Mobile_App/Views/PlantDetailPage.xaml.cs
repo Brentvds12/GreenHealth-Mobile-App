@@ -13,15 +13,11 @@ namespace GreenHealth_Mobile_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlantDetailPage : ContentPage
-    {
-        Plant plant;
-        public PlantDetailPage(Plant plant)
+    {      
+        public PlantDetailPage(Image image)
         {
             InitializeComponent();
-            plantImage.Source = new UriImageSource()
-            {
-                Uri = new Uri("" + plant.ImagePath)
-            }
+            plantImage = image;
         }
     }
 }
