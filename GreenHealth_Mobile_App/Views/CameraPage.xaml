@@ -11,10 +11,10 @@
         <Button Text="Make photo"
                 Clicked="MakeButton_Clicked"
                 BackgroundColor="#81BB26"/>
-        <Button x:Name="ConfirmButton"
+        <!-- <Button x:Name="ConfirmButton"
                 IsVisible="False"
                 Text="Confirm"
                 Clicked="ConfirmButton_Clicked"
-                BackgroundColor="#81BB26"/>
+                BackgroundColor="#81BB26"/> -->
     </StackLayout>
 </ContentPage>

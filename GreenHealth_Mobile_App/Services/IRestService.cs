@@ -15,7 +15,7 @@ namespace GreenHealth_Mobile_App.Services
         Task<bool> LoginAsync(string email, string password);
         Task<List<Plant>> GetPlants(int userId);
         Task<Plant> GetPlant(int plantId);
-        Task<Plant> PatchPlant(int id, Image image);
+        Task<Plant> PatchPlant(int id, Stream stream);
         Task<Plant> PostPlant(Plant plant);
     }
 }
