@@ -78,11 +78,17 @@ namespace GreenHealth_Mobile_App.Services
         }
 
         // Functie om een afbeelding aan een plant toe te voegen.
-        public async Task<Plant> PatchPlant(int id, Stream stream)
+        public async Task<Plant> PatchPlant(int id, Image image)
         {
-            using (var formContent = new MultipartFormDataContent("NKdKd9Yk"))
+            using (var formContent = new MultipartFormDataContent())
             {
-                formContent.Headers.ContentType.MediaType = "multipart/form-data";    
+                byte[] bitmapData;
+                var stream = new MemoryStream();
+                //image.Compress(Bitmap.CompressFormat.Jpeg, 0, stream);
+                bitmapData = stream.ToArray();
+                var fileContent = new ByteArrayContent(bitmapData);
+
+                formContent.Headers.ContentType.MediaType = "multipart/form-data";
                 formContent.Add(new StreamContent(stream));
 
                 HttpClient client = new HttpClient();

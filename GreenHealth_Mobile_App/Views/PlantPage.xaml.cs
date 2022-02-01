@@ -21,7 +21,7 @@ namespace GreenHealth_Mobile_App
         private async void OnItemSelected(Object sender, ItemTappedEventArgs e)
         {
             var details = e.Item as Plant;
-            await Navigation.PushAsync(new PlantDetailPage(details));
+            //await Navigation.PushAsync(new PlantDetailPage(details));
         }
     }
 }
