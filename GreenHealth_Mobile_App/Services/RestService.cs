@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -78,17 +80,12 @@ namespace GreenHealth_Mobile_App.Services
         }
 
         // Functie om een afbeelding aan een plant toe te voegen.
-        public async Task<Plant> PatchPlant(int id, Image image)
+        public async Task<Plant> PatchPlant(int id, Stream stream)
         {
             using (var formContent = new MultipartFormDataContent())
             {
-                byte[] bitmapData;
-                var stream = new MemoryStream();
-                //image.Compress(Bitmap.CompressFormat.Jpeg, 0, stream);
-                bitmapData = stream.ToArray();
-                var fileContent = new ByteArrayContent(bitmapData);
-
-                formContent.Headers.ContentType.MediaType = "multipart/form-data";
+                formContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data") { Name = "file"};
+                formContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 formContent.Add(new StreamContent(stream));
 
                 HttpClient client = new HttpClient();
@@ -102,9 +99,10 @@ namespace GreenHealth_Mobile_App.Services
 
                         var request = new HttpRequestMessage(method, baseUrl + id + "/image")
                         {
-                            Content = new StringContent(
+                            /*Content = new StringContent(
                                             JsonConvert.SerializeObject(formContent),
-                                            Encoding.UTF8, "application/json")
+                                            Encoding.UTF8, "application/json")*/
+                            Content = formContent
                         };
 
                         var response = await client.SendAsync(request);
@@ -118,7 +116,7 @@ namespace GreenHealth_Mobile_App.Services
                         throw ex;
                     }
                 }
-            }
+            }     
         }
 
         // Functie om een nieuwe plant aan te maken.
@@ -144,6 +142,28 @@ namespace GreenHealth_Mobile_App.Services
                 }
                 else return null;
             }           
+        }
+
+        //Functie om een afbeelding tijdelijk op te slaan in de app
+        public String SavePicture(string name, Stream data, string location = "temp")
+        {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            documentsPath = Path.Combine(documentsPath, "Orders", location);
+            Directory.CreateDirectory(documentsPath);
+
+            string filePath = Path.Combine(documentsPath, name);
+
+            byte[] bArray = new byte[data.Length];
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                using (data)
+                {
+                    data.Read(bArray, 0, (int)data.Length);
+                }
+                int length = bArray.Length;
+                fs.Write(bArray, 0, length);
+            }
+            return "temp/" + name;
         }
     }
 }
