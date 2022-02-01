@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GreenHealth_Mobile_App.ViewModels
 {
-    public class TestViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,7 +23,7 @@ namespace GreenHealth_Mobile_App.ViewModels
             }
         }
 
-        public TestViewModel()
+        public BaseViewModel()
         {
 
         }
