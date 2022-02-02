@@ -13,11 +13,27 @@ namespace GreenHealth_Mobile_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlantDetailPage : ContentPage
-    {      
-        public PlantDetailPage(Image image)
+    {
+        Plant plant;
+        Result result;
+        RestService _restService;
+        public PlantDetailPage(Plant plant)
         {
             InitializeComponent();
-            plantImage = image;
+            _restService = new RestService();
+            this.plant = plant;
+            plantImage.Source = new UriImageSource()
+            {
+                Uri = new Uri("https://storagemainfotosplanten.blob.core.windows.net/greenhealth/" + plant.ImagePath)
+            };
+            FetchResult();
+        }
+
+        public async Task FetchResult()
+        {
+            result = await _restService.GetResult(plant.Id);
+            resultText.Text = "Week " + result.GrowthStage;
+            resultConfidence.Text = result.Accuracy + "%";
         }
     }
 }

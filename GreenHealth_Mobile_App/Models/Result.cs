@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GreenHealth_Mobile_App.Models
 {
-    class Result
+    public class Result
     {
         public int Id { get; set; }
         public int GrowthStage { get; set; }

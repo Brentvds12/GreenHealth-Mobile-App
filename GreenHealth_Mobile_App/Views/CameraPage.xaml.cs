@@ -15,9 +15,11 @@ namespace GreenHealth_Mobile_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CameraPage : ContentPage
     {
+        private readonly RestService _restService;
         public CameraPage()
         {
             InitializeComponent();
+            _restService = new RestService() ;
         }
 
         async void PickButton_Clicked(Object sender, EventArgs e)
@@ -37,60 +39,32 @@ namespace GreenHealth_Mobile_App
             await stream.CopyToAsync(memoryStream);
             resultImage.Source = ImageSource.FromStream(() => memoryStream);
 
-            RestService restService = new RestService();
-            Console.WriteLine("RestService aangemaakt");
-
             Plant plant = new Plant(1);
-            Console.WriteLine("new plant created: " + plant.Id);
-            Plant newPlant = await restService.PostPlant(plant);
-            Console.WriteLine("new plant posted: " + newPlant.Id);
-            Plant resultPlant = await restService.PatchPlant(newPlant.Id, stream);
-            Console.WriteLine("plant patched: " + resultPlant.Id);
+            Plant newPlant = await _restService.PostPlant(plant);
+            Plant resultPlant = await _restService.PatchPlant(newPlant.Id, stream);
 
-            await Navigation.PushAsync(new PlantDetailPage(resultImage));
-            Console.WriteLine("navigation attempted");
-
-            /*ConfirmButton.IsVisible = true;*/
+            await Navigation.PushAsync(new PlantDetailPage(resultPlant));
         }
 
         async void MakeButton_Clicked(Object sender, EventArgs e)
         {
             var result = await MediaPicker.CapturePhotoAsync();
 
-            var stream = await result.OpenReadAsync();
-
-            if (stream != null)
+            if (result == null)
             {
-                resultImage.Source = ImageSource.FromStream(() => stream);
-
-                RestService restService = new RestService();
-                Console.WriteLine("RestService aangemaakt");
-
-                Plant plant = new Plant(1);
-                Console.WriteLine("new plant created: " + plant.Id);
-                Plant newPlant = await restService.PostPlant(plant);
-                Console.WriteLine("new plant posted: " + newPlant.Id);
-                Plant resultPlant = await restService.PatchPlant(newPlant.Id, stream);
-                Console.WriteLine("plant patched: " + resultPlant.Id);
-                await Navigation.PushAsync(new PlantDetailPage(resultImage));
-                Console.WriteLine("navigation attempted");
-
-                /*ConfirmButton.IsVisible = true;*/
+                return;
             }
-        }
 
-        /*async void ConfirmButton_Clicked(object sender, EventArgs e)
-        {
-            RestService restService = new RestService();
+            var stream = await result.OpenReadAsync();
+            var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+            resultImage.Source = ImageSource.FromStream(() => memoryStream);
 
             Plant plant = new Plant(1);
-            Console.WriteLine("new plant created: " + plant.Id);
-            Plant newPlant = await restService.PostPlant(plant);
-            Console.WriteLine("new plant posted: " + newPlant.Id);
-            Plant resultPlant = await restService.PatchPlant(newPlant.Id);
-            Console.WriteLine("plant patched: " + resultPlant.Id);
-            await Navigation.PushAsync(new PlantDetailPage(resultImage));
-            Console.WriteLine("navigation attempted");
-        }*/
+            Plant newPlant = await _restService.PostPlant(plant);
+            Plant resultPlant = await _restService.PatchPlant(newPlant.Id, stream);
+
+            await Navigation.PushAsync(new PlantDetailPage(resultPlant));
+        }
     }
 }

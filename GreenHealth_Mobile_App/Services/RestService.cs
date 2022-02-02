@@ -124,6 +124,19 @@ namespace GreenHealth_Mobile_App.Services
             return null;
         }
 
+        //Functie om een analyseresultaat op te halen adhv een plantID
+        public async Task<Result> GetResult(int plantId)
+        {
+            Result result;
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
+
+            HttpResponseMessage response = await _httpClient.GetAsync(BaseUrl + "Plants/" + plantId + "/result");
+            var json = await response.Content.ReadAsStringAsync();
+
+            result = JsonConvert.DeserializeObject<Result>(json);
+            return result;
+        }
+
         //Functie om een afbeelding tijdelijk op te slaan in de app
         public String SavePicture(string name, Stream data, string location = "temp")
         {

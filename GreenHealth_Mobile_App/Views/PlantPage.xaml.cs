@@ -1,4 +1,5 @@
 ﻿using GreenHealth_Mobile_App.Models;
+using GreenHealth_Mobile_App.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ namespace GreenHealth_Mobile_App
         public PlantPage()
         {
             InitializeComponent();
+            BindingContext = new BaseViewModel();
         }
 
         private async void OnItemSelected(Object sender, ItemTappedEventArgs e)
         {
-            var details = e.Item as Plant;
-            //await Navigation.PushAsync(new PlantDetailPage(details));
+            await Navigation.PushAsync(new PlantDetailPage(e.Item as Plant));
         }
     }
 }

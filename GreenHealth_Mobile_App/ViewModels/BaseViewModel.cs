@@ -1,9 +1,11 @@
 ﻿using GreenHealth_Mobile_App.Models;
+using GreenHealth_Mobile_App.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GreenHealth_Mobile_App.ViewModels
 {
@@ -11,21 +13,19 @@ namespace GreenHealth_Mobile_App.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Plant> plants;
+        private ObservableCollection<Plant> Plants { get; set; }
 
-        public ObservableCollection<Plant> Plants
-        {
-            get { return plants; }
-            set
-            {
-                plants = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("plants"));
-            }
-        }
+        private RestService _restService { get; set; }
 
         public BaseViewModel()
         {
+            _restService = new RestService();
+            FillPlants();
+        }
 
+        public async Task FillPlants()
+        {
+            Plants = new ObservableCollection<Plant>(await _restService.GetPlants(1));
         }
     }
 }
