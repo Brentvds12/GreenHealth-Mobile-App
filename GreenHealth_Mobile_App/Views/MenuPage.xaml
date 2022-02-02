@@ -9,9 +9,9 @@
     <!-- <ContentPage Title="Tab 2" /> -->
     <!-- <ContentPage Title="Tab 3" /> -->
 
-    <local:PlantPage Title="Plants"/>
-    <local:HomePage Title="Analysis"/>
-    <local:CameraPage Title="Camera"/>
-    <local:ProfilePage Title="Account"/>
-
+    <local:PlantPage IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Plant-icon.png"/>
+    <local:HomePage IconImageSource = "https://cdn.icon-icons.com/icons2/1305/PNG/512/loupe_86084.png"/>
+    <local:CameraPage IconImageSource="https://i.pinimg.com/originals/91/04/ab/9104ab6b89dd59d25881d8a74b1cb848.png"/>
+    <local:ProfilePage IconImageSource="https://i.ibb.co/KFFSLw7/user.png"/>
+   
 </TabbedPage>
