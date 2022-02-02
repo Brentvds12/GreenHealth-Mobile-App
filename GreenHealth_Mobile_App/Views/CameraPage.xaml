@@ -5,16 +5,32 @@
              BackgroundColor="White">
     <StackLayout VerticalOptions="Center">
         <Image x:Name="resultImage"/>
+        <Label Text="Upload hier een foto voor een analyse " TextColor="Black" Margin="20,30,0,0" FontSize="Large" FontAttributes="Bold"></Label>
         <Button Text="Kies foto"
                 Clicked="PickButton_Clicked"
-                BackgroundColor="#81BB26" Margin="120,0,120,0" TextColor="White" FontAttributes="Bold" />
+                BackgroundColor="#81BB26" Margin="120,130,120,0" TextColor="White" FontAttributes="Bold" />
         <Button Text="Maak foto"
                 Clicked="MakeButton_Clicked"
-                BackgroundColor="#81BB26"  Margin="120,0,120,0" TextColor="White" FontAttributes="Bold" />
+                BackgroundColor="#81BB26"  Margin="120,10,120,0" TextColor="White" FontAttributes="Bold" />
         <!-- <Button x:Name="ConfirmButton"
                 IsVisible="False"
                 Text="Bevestig"
                 Clicked="ConfirmButton_Clicked"
                 BackgroundColor="#81BB26" TextColor="White"/> -->
+        <Grid Margin="10,50,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Source="https://www.kuleuven.be/communicatie/congresbureau/oude-versies/oud2015/congres/sefi2013/vito-logo-cmyk-halo2.png" WidthRequest="80" HeightRequest="30" Margin="10,0,0,0" Grid.Row="2" Grid.Column="0"></Image>
+            <Image Source="https://www.thomasmore.be/themes/custom/wundertheme/dist/assets/img/logo_thomas_more.png" WidthRequest="100" HeightRequest="60" Margin="40,0,0,0" Grid.Row="2" Grid.Column="1"></Image>
+            <Image Source="https://i.ibb.co/R0HXcxg/Logo-Green-Health-2.png" WidthRequest="30" HeightRequest="15" Grid.Row="2" Grid.Column="2"></Image>
+
+        </Grid>
     </StackLayout>
 </ContentPage>
