@@ -27,26 +27,30 @@ namespace GreenHealth_Mobile_App
                 Title = "Please pick a photo"
             });
 
-            var stream = await result.OpenReadAsync();
-
-            if(stream != null)
+            if (result == null)
             {
-                resultImage.Source = ImageSource.FromStream(() => stream);
-
-                RestService restService = new RestService();
-                Console.WriteLine("RestService aangemaakt");
-
-                Plant plant = new Plant(1);
-                Console.WriteLine("new plant created: " + plant.Id);
-                Plant newPlant = await restService.PostPlant(plant);
-                Console.WriteLine("new plant posted: " + newPlant.Id);
-                Plant resultPlant = await restService.PatchPlant(newPlant.Id, stream);
-                Console.WriteLine("plant patched: " + resultPlant.Id);
-                await Navigation.PushAsync(new PlantDetailPage(resultImage));
-                Console.WriteLine("navigation attempted");
-
-                /*ConfirmButton.IsVisible = true;*/
+                return;
             }
+
+            var stream = await result.OpenReadAsync();
+            var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+            resultImage.Source = ImageSource.FromStream(() => memoryStream);
+
+            RestService restService = new RestService();
+            Console.WriteLine("RestService aangemaakt");
+
+            Plant plant = new Plant(1);
+            Console.WriteLine("new plant created: " + plant.Id);
+            Plant newPlant = await restService.PostPlant(plant);
+            Console.WriteLine("new plant posted: " + newPlant.Id);
+            Plant resultPlant = await restService.PatchPlant(newPlant.Id, stream);
+            Console.WriteLine("plant patched: " + resultPlant.Id);
+
+            await Navigation.PushAsync(new PlantDetailPage(resultImage));
+            Console.WriteLine("navigation attempted");
+
+            /*ConfirmButton.IsVisible = true;*/
         }
 
         async void MakeButton_Clicked(Object sender, EventArgs e)
