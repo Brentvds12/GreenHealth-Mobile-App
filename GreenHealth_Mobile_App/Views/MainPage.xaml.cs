@@ -19,10 +19,9 @@ namespace GreenHealth_Mobile_App
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
+            RestService restService = new RestService();
             bool isEmailEmpty = string.IsNullOrEmpty(emailEntry.Text);
             bool isPasswordEmpty = string.IsNullOrEmpty(passwordEntry.Text);
-
-            RestService restService = new RestService();
 
             if (isEmailEmpty || isPasswordEmpty)
             {

@@ -9,12 +9,13 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
-                <Grid>
-                    <Image x:Name="plantImage"/>
-                    <Label Text="{Binding Result}" TextColor="Black"/>
-                </Grid>
-            </ScrollView>
+            <Image x:Name="plantImage"/>
+            <Label x:Name="resultText"
+                   TextColor="Black"
+                   Text="test result"/>
+            <Label x:Name="resultConfidence"
+                   TextColor="Black"
+                   Text="test confidence"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

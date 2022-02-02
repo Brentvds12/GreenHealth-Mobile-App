@@ -17,5 +17,7 @@ namespace GreenHealth_Mobile_App.Services
         Task<Plant> GetPlant(int plantId);
         Task<Plant> PatchPlant(int id, Stream stream);
         Task<Plant> PostPlant(Plant plant);
+        String SavePicture(string name, Stream data, string location = "temp");
+        Task<Result> GetResult(int plantId);
     }
 }
