@@ -6,13 +6,13 @@ namespace GreenHealth_Mobile_App.Models
 {
     public class Plant
     {
-        public Plant(int userId)
+        public Plant(int plotId)
         {
-            UserId = userId;
+            PlotId = plotId;
         }
 
-        public int Id { get; set; } = 0;
-		public int UserId { get; set; }
+        public int Id { get; set; }
+		public int PlotId{ get; set; }
 		public int? ResultId { get; set; } = null;
 		public string Location { get; set; } = null;
 		public string Timestamp { get; set; } = null;

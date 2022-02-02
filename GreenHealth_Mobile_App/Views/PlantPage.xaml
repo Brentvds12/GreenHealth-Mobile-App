@@ -6,7 +6,7 @@
     xmlns:ViewModels="clr-namespace:GreenHealth_Mobile_App.ViewModels"
     BackgroundColor="White">
     <ContentPage.BindingContext>
-        <ViewModels:TestViewModel />
+        <ViewModels:BaseViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>

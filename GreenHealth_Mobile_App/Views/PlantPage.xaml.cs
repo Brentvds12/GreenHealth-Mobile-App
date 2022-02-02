@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenHealth_Mobile_App.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace GreenHealth_Mobile_App
         public PlantPage()
         {
             InitializeComponent();
+        }
+
+        private async void OnItemSelected(Object sender, ItemTappedEventArgs e)
+        {
+            var details = e.Item as Plant;
+            //await Navigation.PushAsync(new PlantDetailPage(details));
         }
     }
 }
