@@ -5,8 +5,8 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welkom!" TextColor="Black" Margin="80,120,80,0" FontSize="60"/>
-            <Label Text="Op de Vito Analysing App" TextColor="Black" Margin="40,30,0,0" FontSize="30"/>
+            <Label Text="Welkom!" TextColor="Black" Margin="80,120,80,0" FontSize="60" FontFamily="ProximaNova-Boldlt"/>
+            <Label Text="Op de Vito Analysing App" TextColor="Black" Margin="40,30,0,0" FontSize="30" FontFamily="ProximaNova-Semibold"/>
             <Grid Margin="0,130,0,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
