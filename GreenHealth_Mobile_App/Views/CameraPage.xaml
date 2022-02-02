@@ -11,11 +11,10 @@
         <Button Text="Maak foto"
                 Clicked="MakeButton_Clicked"
                 BackgroundColor="#81BB26"  Margin="120,0,120,0" TextColor="White" FontAttributes="Bold" />
-        <Button x:Name="ConfirmButton"
+        <!-- <Button x:Name="ConfirmButton"
                 IsVisible="False"
                 Text="Bevestig"
                 Clicked="ConfirmButton_Clicked"
-                BackgroundColor="#81BB26" TextColor="White"/>
-        
+                BackgroundColor="#81BB26" TextColor="White"/> -->
     </StackLayout>
 </ContentPage>
