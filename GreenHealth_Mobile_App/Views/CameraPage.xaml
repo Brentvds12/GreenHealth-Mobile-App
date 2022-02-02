@@ -5,16 +5,17 @@
              BackgroundColor="White">
     <StackLayout VerticalOptions="Center">
         <Image x:Name="resultImage"/>
-        <Button Text="Choose photo"
+        <Button Text="Kies foto"
                 Clicked="PickButton_Clicked"
-                BackgroundColor="#81BB26" Margin="70,0,70,0"/>
-        <Button Text="Make photo"
+                BackgroundColor="#81BB26" Margin="120,0,120,0" TextColor="White" FontAttributes="Bold" />
+        <Button Text="Maak foto"
                 Clicked="MakeButton_Clicked"
-                BackgroundColor="#81BB26"  Margin="70,0,70,0"/>
+                BackgroundColor="#81BB26"  Margin="120,0,120,0" TextColor="White" FontAttributes="Bold" />
         <Button x:Name="ConfirmButton"
                 IsVisible="False"
-                Text="Confirm"
+                Text="Bevestig"
                 Clicked="ConfirmButton_Clicked"
-                BackgroundColor="#81BB26"/>
+                BackgroundColor="#81BB26" TextColor="White"/>
+        
     </StackLayout>
 </ContentPage>

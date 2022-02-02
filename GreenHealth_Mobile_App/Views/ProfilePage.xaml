@@ -6,10 +6,10 @@
     <ContentPage.Content>
         
         <StackLayout >
-
+            <Label Text="Verander je wachtwoord" TextColor="Black" Margin="80,30,0,0" FontSize="Large" FontAttributes="Bold"></Label>
             <Label Text="Email" TextColor="Black" Margin="170,30,0,10" FontSize="Large"></Label>
             <Entry Placeholder="Email" Margin="70,0,70,0" ></Entry>
-            <Label Text="Wachtwoord" TextColor="Black" Margin="140,20,0,10" FontSize="Large"></Label>
+            <Label Text="Nieuwe wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large"></Label>
             <Entry Placeholder="Wachtwoord" Margin="70,0,70,0"></Entry>
             <Label Text="Herhaal wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large"></Label>
             <Entry Placeholder="Herhaal wachtwoord" Margin="70,0,70,0"></Entry>
