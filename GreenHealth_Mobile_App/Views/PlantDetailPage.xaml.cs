@@ -19,5 +19,7 @@ namespace GreenHealth_Mobile_App
             InitializeComponent();
             plantImage = image;
         }
+
+        
     }
 }
