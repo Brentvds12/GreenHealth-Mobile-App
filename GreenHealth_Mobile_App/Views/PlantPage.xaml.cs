@@ -24,5 +24,10 @@ namespace GreenHealth_Mobile_App
         {
             await Navigation.PushAsync(new PlantDetailPage(e.Item as Plant));
         }
+        private async void TempDetailNav()
+        {
+            Plant plant = new Plant(1);
+            await Navigation.PushAsync(new PlantDetailPage(plant));
+        }
     }
 }

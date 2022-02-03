@@ -7,11 +7,11 @@
         
         <StackLayout >
             <Label Text="Verander je wachtwoord" TextColor="Black" Margin="80,30,0,0" FontSize="Large" FontAttributes="Bold"></Label>
-            <Label Text="Email" TextColor="Black" Margin="170,30,0,10" FontSize="Large"></Label>
+            <Label Text="Email" TextColor="Black" Margin="170,30,0,10" FontSize="Large" FontFamily="ProximaNova-Semibold.otf"></Label>
             <Entry Placeholder="Email" Margin="70,0,70,0" ></Entry>
-            <Label Text="Nieuwe wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large"></Label>
+            <Label Text="Nieuwe wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large" FontFamily="ProximaNova-Semibold.otf"></Label>
             <Entry Placeholder="Wachtwoord" Margin="70,0,70,0"></Entry>
-            <Label Text="Herhaal wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large"></Label>
+            <Label Text="Herhaal wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large" FontFamily="ProximaNova-Semibold.otf"></Label>
             <Entry Placeholder="Herhaal wachtwoord" Margin="70,0,70,0"></Entry>
             <Button Text="Submit" TextColor="White" BackgroundColor="#81BB26" Margin="50"></Button>
            

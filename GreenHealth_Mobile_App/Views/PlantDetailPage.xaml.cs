@@ -35,5 +35,7 @@ namespace GreenHealth_Mobile_App
             resultText.Text = "Week " + result.GrowthStage;
             resultConfidence.Text = result.Accuracy + "%";
         }
+
+        
     }
 }

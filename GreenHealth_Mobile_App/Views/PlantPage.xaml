@@ -77,10 +77,15 @@
                     FontAttributes="Italic"
                     LineBreakMode="TailTruncation" />
                 <!--  Text="{Binding Location}"  -->
-
+                <Button x:Name="tempNavButton"
+                Margin="15"
+                Text="PlantDetail"
+                BackgroundColor="#81BB26"
+                TextColor="White"
+                Clicked="tempNavButton_Clicked"/>
 
             </Grid>
-            <Grid Margin="10,90,0,20">
+            <Grid Margin="10,130,0,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />

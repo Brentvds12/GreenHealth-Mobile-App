@@ -4,7 +4,7 @@
              x:Class="GreenHealth_Mobile_App.MainPage"
              BackgroundColor="White">
 
-    <StackLayout Margin="15"
+    <StackLayout Margin="30,100,30,0"
                  VerticalOptions="Center">
         <Frame BackgroundColor="#81BB26" Padding="24" CornerRadius="0">
             <Label Text="Vito Analysing App"
@@ -26,11 +26,27 @@
                PlaceholderColor="Black"
                TextColor="Black"/>
         <Button x:Name="loginButton"
-                Margin="15"
+                Margin="15,15,15,0"
                 Text="Login"
                 BackgroundColor="#81BB26"
                 TextColor="White"
                 Clicked="loginButton_Clicked"/>
+
+        <Grid Margin="0,0,0,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image Source="https://www.kuleuven.be/communicatie/congresbureau/oude-versies/oud2015/congres/sefi2013/vito-logo-cmyk-halo2.png" WidthRequest="80" HeightRequest="30" Margin="10,0,0,0" Grid.Row="2" Grid.Column="0"></Image>
+        <Image Source="https://www.thomasmore.be/themes/custom/wundertheme/dist/assets/img/logo_thomas_more.png" WidthRequest="100" HeightRequest="60" Margin="40,0,0,0" Grid.Row="2" Grid.Column="1"></Image>
+        <Image Source="https://i.ibb.co/R0HXcxg/Logo-Green-Health-2.png" WidthRequest="30" HeightRequest="15" Grid.Row="2" Grid.Column="2"></Image>
+
+        </Grid>
     </StackLayout>
 
 </ContentPage>
