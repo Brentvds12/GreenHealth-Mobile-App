@@ -32,8 +32,8 @@ namespace GreenHealth_Mobile_App
         public async Task FetchResult()
         {
             result = await _restService.GetResult(plant.Id);
-            resultText.Text = "Week " + result.GrowthStage;
-            resultConfidence.Text = result.Accuracy + "%";
+            //resultText.Text = "Week " + result.GrowthStage;
+            //resultConfidence.Text = result.Accuracy + "%";
         }
 
         

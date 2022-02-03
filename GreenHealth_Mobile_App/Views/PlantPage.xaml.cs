@@ -24,7 +24,7 @@ namespace GreenHealth_Mobile_App
         {
             await Navigation.PushAsync(new PlantDetailPage(e.Item as Plant));
         }
-        private async void TempDetailNav()
+        private async void tempNavButton_Clicked(object sender, EventArgs e)
         {
             Plant plant = new Plant(1);
             await Navigation.PushAsync(new PlantDetailPage(plant));
