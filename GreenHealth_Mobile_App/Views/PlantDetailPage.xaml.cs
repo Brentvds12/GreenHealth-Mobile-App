@@ -1,4 +1,4 @@
-﻿using GreenHealth_Mobile_App.Models;
+using GreenHealth_Mobile_App.Models;
 using GreenHealth_Mobile_App.Services;
 using System;
 using System.Collections.Generic;
@@ -29,5 +29,7 @@ namespace GreenHealth_Mobile_App
             resultText.Text = result.Species;
             resultConfidence.Text = "Week " + result.GrowthStage + " met " + Math.Round((decimal)result.Accuracy, 2) + "% zekerheid";          
         }
+
+        
     }
 }

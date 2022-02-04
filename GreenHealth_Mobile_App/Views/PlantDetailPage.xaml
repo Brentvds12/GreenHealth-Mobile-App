@@ -5,13 +5,14 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Image x:Name="plantImage"/>
-            <Label x:Name="resultText"
-                   TextColor="Black"
-                   Text="test result"/>
-            <Label x:Name="resultConfidence"
-                   TextColor="Black"
-                   Text="test confidence"/>
+            <!--<Label Text="Details" TextColor="Black" Margin="165,30,0,0" FontSize="Large" FontAttributes="Bold"></Label>-->
+            <Image x:Name="plantImage" Source="https://www.mooiemoestuin.nl/wp-content/uploads/Maisplanten.jpg" Margin="40,30,40,10"/>
+            <Label Text="Datum: 03/02/2022" TextColor="Black" Margin="140,0,140,0" FontFamily="ProximaNova-Extrabld.otf"/>
+            <Label Text="Resultaat: week 4" TextColor="Black" Margin="150,10,145,0" FontFamily="ProximaNova-Extrabld.otf" />
+            <Button Text="Verander waarde" BackgroundColor="#81BB26" Margin="120,10,120,0" TextColor="White" FontAttributes="Bold"/>    
+            <!--nog een klik functie-->
+            
+    
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

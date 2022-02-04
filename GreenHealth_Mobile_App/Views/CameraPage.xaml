@@ -17,7 +17,7 @@
                 Text="Bevestig"
                 Clicked="ConfirmButton_Clicked"
                 BackgroundColor="#81BB26" TextColor="White"/> -->
-        <Grid Margin="10,50,0,20">
+        <Grid Margin="10,75,0,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
