@@ -3,83 +3,48 @@
     x:Class="GreenHealth_Mobile_App.PlantPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ViewModels="clr-namespace:GreenHealth_Mobile_App.ViewModels"
     BackgroundColor="White">
-    <ContentPage.BindingContext>
-        <ViewModels:BaseViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text=" Reeds geanalyseerde planten " TextColor="Black" Margin="50,30,0,0" FontSize="Large" FontAttributes="Bold"></Label>
-            <!--<CollectionView ItemsLayout="HorizontalList">
-                  ItemsSource="{Binding Monkeys}"  
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="80" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Grid.RowSpan="2"
-                        Aspect="AspectFill"
-                        BackgroundColor="Green" />
-                      Source="{Binding ImageUrl}
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        BackgroundColor="blue"
-                        FontAttributes="Bold"
-                        LineBreakMode="TailTruncation" />
-                        Text="{Binding Name}"  
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        BackgroundColor="Yellow"
-                        FontAttributes="Italic"
-                        LineBreakMode="TailTruncation" />
-                        Text="{Binding Location}"  
-                </Grid>
-                </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>-->
-            <Grid Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Image
-                    Grid.RowSpan="2"
-                    Aspect="AspectFill"
-                    BackgroundColor="Green" />
-                <!--  Source="{Binding ImageUrl}"  -->
+            <Label Text=" Reeds geanalyseerde planten " TextColor="Black" Margin="30,30,0,0" FontSize="Large" FontAttributes="Bold"/>
+            <ListView x:Name="PlantList"
+                      ItemTapped="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80" />
+                                <RowDefinition Height="80" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                                   Aspect="AspectFill"
+                                   BackgroundColor="Green"
+                                   Source="{Binding ImagePath}"/>
 
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    BackgroundColor="blue"
-                    FontAttributes="Bold"
-                    LineBreakMode="TailTruncation" />
-                <!--  Text="{Binding Name}"  -->
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   BackgroundColor="blue"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="TailTruncation" 
+                                   Text="{Binding PlotId}"/>
 
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    BackgroundColor="Yellow"
-                    FontAttributes="Italic"
-                    LineBreakMode="TailTruncation" />
-                <!--  Text="{Binding Location}"  -->
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   BackgroundColor="Yellow"
+                                   FontAttributes="Italic"
+                                   LineBreakMode="TailTruncation" 
+                                   Text="{Binding Location}"/>
 
-
-            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            
             <Grid Margin="10,90,0,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

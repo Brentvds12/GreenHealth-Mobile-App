@@ -13,7 +13,7 @@ namespace GreenHealth_Mobile_App.Services
     public interface IRestService
     {
         Task<bool> LoginAsync(string email, string password);
-        Task<List<Plant>> GetPlants(int userId);
+        Task<List<Plant>> GetPlants();
         Task<Plant> GetPlant(int plantId);
         Task<Plant> PatchPlant(int id, Stream stream);
         Task<Plant> PostPlant(Plant plant);

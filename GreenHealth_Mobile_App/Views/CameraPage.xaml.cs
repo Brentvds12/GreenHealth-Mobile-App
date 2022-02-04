@@ -42,8 +42,9 @@ namespace GreenHealth_Mobile_App
             Plant plant = new Plant(1);
             Plant newPlant = await _restService.PostPlant(plant);
             Plant resultPlant = await _restService.PatchPlant(newPlant.Id, stream);
+            Result result1 = await _restService.GetResult(resultPlant.Id);
 
-            await Navigation.PushAsync(new PlantDetailPage(resultPlant));
+            await Navigation.PushAsync(new PlantDetailPage(resultPlant, result1));
         }
 
         async void MakeButton_Clicked(Object sender, EventArgs e)
@@ -63,8 +64,9 @@ namespace GreenHealth_Mobile_App
             Plant plant = new Plant(1);
             Plant newPlant = await _restService.PostPlant(plant);
             Plant resultPlant = await _restService.PatchPlant(newPlant.Id, stream);
+            Result result1 = await _restService.GetResult(resultPlant.Id);
 
-            await Navigation.PushAsync(new PlantDetailPage(resultPlant));
+            await Navigation.PushAsync(new PlantDetailPage(resultPlant, result1));
         }
     }
 }

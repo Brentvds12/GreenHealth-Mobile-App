@@ -1,5 +1,4 @@
 ﻿using GreenHealth_Mobile_App.Services;
-using GreenHealth_Mobile_App.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

@@ -4,12 +4,14 @@ using System.Text;
 
 namespace GreenHealth_Mobile_App.Models
 {
-    public class Plot
-    {
+	public class Season
+	{
 		public int Id { get; set; }
-		public int OrganisationId { get; set; }
-		public string Location { get; set; }
-		public Organisation Organisation { get; set; }
+		public string Name { get; set; }
+#nullable enable
+		public string? StartDate { get; set; }
+		public string? EndDate { get; set; }
+#nullable disable
 		public ICollection<Plant> Plants { get; set; }
-    }
+	}
 }

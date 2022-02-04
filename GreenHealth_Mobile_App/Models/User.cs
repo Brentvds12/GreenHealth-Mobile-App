@@ -13,6 +13,21 @@ namespace GreenHealth_Mobile_App.Models
 		public string Address { get; set; }
 		public string Password { get; set; }
 		public bool IsAdmin { get; set; }
-		public ICollection<Plant> Plants { get; set; }
+		public bool IsOwner { get; set; }
+#nullable enable
+		public int? OrganisationId { get; set; }
+		public Organisation? Organisation { get; set; }
+#nullable disable
+		public User()
+		{
+			Id = 0;
+			FirstName = "";
+			LastName = "";
+			Email = "";
+			Address = "";
+			Password = "";
+			IsAdmin = false;
+			IsOwner = false;
+		}
 	}
 }
