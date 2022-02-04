@@ -8,9 +8,11 @@ namespace GreenHealth_Mobile_App.Models
     {
         public int Id { get; set; }
         public int GrowthStage { get; set; }
-        public double Accuracy { get; set; }
-        public int CorrectedGrowthStage { get; set; }
-        public string Species { get; set; }
-        public string CorrectedSpecies { get; set; }
+#nullable enable
+        public double? Accuracy { get; set; }
+        public int? CorrectedGrowthStage { get; set; }
+        public string? Species { get; set; }
+        public string? CorrectedSpecies { get; set; }
+#nullable disable
     }
 }

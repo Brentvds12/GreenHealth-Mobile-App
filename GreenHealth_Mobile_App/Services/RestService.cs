@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,17 +15,26 @@ namespace GreenHealth_Mobile_App.Services
     public class RestService : IRestService
     {
         // Basis Url voor de API.
-        private const string BaseUrl = "https://greenhealthapi.azurewebsites.net/api/";
+        private const string baseUrl = "https://greenhealthapi.azurewebsites.net/api/";
 
         private static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
         private readonly HttpClient _httpClient;
 
+        JsonSerializerOptions serializerOptions;
+
+        public List<Plant> plantList { get; set; }
+
         public RestService()
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri(BaseUrl)
+                BaseAddress = new Uri(baseUrl)
+            };
+            serializerOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
             };
         }
 
@@ -34,7 +44,7 @@ namespace GreenHealth_Mobile_App.Services
             string jsonData = @"{""email"" : """ + email + @""", ""password"" : """ + password + @"""}";
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _httpClient.PostAsync(BaseUrl + "user/authenticate", content);
+            HttpResponseMessage response = await _httpClient.PostAsync(baseUrl + "user/authenticate", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -49,19 +59,25 @@ namespace GreenHealth_Mobile_App.Services
         }
 
         // Functie om alle planten op te vragen.
-        public async Task<List<Plant>> GetPlants(int userId)
+        public async Task<List<Plant>> GetPlants()
         {
-            List<Plant> plants = new List<Plant>();
+            plantList = new List<Plant>();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
 
-            HttpResponseMessage response = await _httpClient.GetAsync(BaseUrl + "Users/" + userId + "/plants");
+            HttpResponseMessage response = await _httpClient.GetAsync(baseUrl + "Plants");
             var json = await response.Content.ReadAsStringAsync();
-
-            var plantsResponse = JsonConvert.DeserializeObject<PlantResponse>(json);
-
-            plants = plantsResponse.plants as List<Plant>;
-
-            return plants;
+            Console.WriteLine(json);
+            try
+            {
+                var plantsResponse = System.Text.Json.JsonSerializer.Deserialize<List<Plant>>(json, serializerOptions);
+                plantList = plantsResponse;
+                return plantList;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex;
+            }
         }
 
         // Functie om een specifieke plant op te vragen
@@ -70,7 +86,7 @@ namespace GreenHealth_Mobile_App.Services
             Plant plant;
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
 
-            HttpResponseMessage response = await _httpClient.GetAsync(BaseUrl + "Plants/" + plantId);
+            HttpResponseMessage response = await _httpClient.GetAsync(baseUrl + "Plants/" + plantId);
             var json = await response.Content.ReadAsStringAsync();
 
             plant = JsonConvert.DeserializeObject<Plant>(json);
@@ -90,7 +106,7 @@ namespace GreenHealth_Mobile_App.Services
             var response = await _httpClient.SendAsync(new HttpRequestMessage
             {
                 Method = PatchMethod,
-                RequestUri = new Uri(BaseUrl + "plants/" + id + "/image"),
+                RequestUri = new Uri(baseUrl + "plants/" + id + "/image"),
                 Content = new MultipartFormDataContent("Upload----" + DateTimeOffset.Now.ToString("O"))
                 {
                     { streamContent, "image", Guid.NewGuid() + ".jpg" }
@@ -111,7 +127,7 @@ namespace GreenHealth_Mobile_App.Services
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
 
-            HttpResponseMessage response = await _httpClient.PostAsync(BaseUrl + "plants", content);
+            HttpResponseMessage response = await _httpClient.PostAsync(baseUrl + "plants", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -130,9 +146,8 @@ namespace GreenHealth_Mobile_App.Services
             Result result;
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["AppToken"].ToString());
 
-            HttpResponseMessage response = await _httpClient.GetAsync(BaseUrl + "Plants/" + plantId + "/result");
+            HttpResponseMessage response = await _httpClient.GetAsync(baseUrl + "Plants/" + plantId + "/result");
             var json = await response.Content.ReadAsStringAsync();
-
             result = JsonConvert.DeserializeObject<Result>(json);
             return result;
         }

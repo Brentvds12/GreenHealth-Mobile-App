@@ -6,7 +6,9 @@ namespace GreenHealth_Mobile_App.Models
 {
     public class Organisation
     {
-        public int Id { get; set; }
-        public String Name { get; set; } = "default";
-    }
+		public int Id { get; set; }
+		public string Name { get; set; }		
+		public ICollection<User> Users { get; set; }
+		public ICollection<Plot> Plots { get; set; }
+	}
 }

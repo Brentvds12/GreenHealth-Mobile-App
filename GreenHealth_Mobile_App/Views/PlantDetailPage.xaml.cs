@@ -1,4 +1,4 @@
-﻿using GreenHealth_Mobile_App.Models;
+using GreenHealth_Mobile_App.Models;
 using GreenHealth_Mobile_App.Services;
 using System;
 using System.Collections.Generic;
@@ -16,24 +16,18 @@ namespace GreenHealth_Mobile_App
     {
         Plant plant;
         Result result;
-        RestService _restService;
-        public PlantDetailPage(Plant plant)
+        public PlantDetailPage(Plant plant, Result result)
         {
             InitializeComponent();
-            _restService = new RestService();
             this.plant = plant;
+            this.result = result;
             plantImage.Source = new UriImageSource()
             {
                 Uri = new Uri("https://storagemainfotosplanten.blob.core.windows.net/greenhealth/" + plant.ImagePath)
             };
-            FetchResult();
-        }
-
-        public async Task FetchResult()
-        {
-            result = await _restService.GetResult(plant.Id);
-            //resultText.Text = "Week " + result.GrowthStage;
-            //resultConfidence.Text = result.Accuracy + "%";
+            
+            resultText.Text = result.Species;
+            resultConfidence.Text = "Week " + result.GrowthStage + " met " + Math.Round((decimal)result.Accuracy, 2) + "% zekerheid";          
         }
 
         
