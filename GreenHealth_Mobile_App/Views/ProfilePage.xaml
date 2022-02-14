@@ -14,10 +14,6 @@
             <Label Text="Herhaal wachtwoord" TextColor="Black" Margin="110,20,0,10" FontSize="Large" FontFamily="ProximaNova-Semibold.otf"></Label>
             <Entry Placeholder="Herhaal wachtwoord" Margin="70,0,70,0"></Entry>
             <Button Text="Submit" TextColor="White" BackgroundColor="#81BB26" Margin="50"></Button>
-           
-            
-            
-
         </StackLayout>
         
     </ContentPage.Content>
