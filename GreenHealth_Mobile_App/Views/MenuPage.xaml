@@ -4,13 +4,10 @@
             xmlns:local="clr-namespace:GreenHealth_Mobile_App"
              x:Class="GreenHealth_Mobile_App.MenuPage"
             BarBackgroundColor="#81BB26">
-  <!--Pages can be added as references or inline-->
-  <!-- <ContentPage Title="Tab 1" /> -->
-    <!-- <ContentPage Title="Tab 2" /> -->
-    <!-- <ContentPage Title="Tab 3" /> -->
     <local:HomePage IconImageSource = "https://cdn-icons-png.flaticon.com/512/25/25694.png"/>
     <local:CameraPage IconImageSource="https://i.pinimg.com/originals/91/04/ab/9104ab6b89dd59d25881d8a74b1cb848.png"/>
-    <local:PlantPage IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Plant-icon.png"/>
-    <local:ProfilePage IconImageSource="https://i.ibb.co/KFFSLw7/user.png"/>
+    <!-- De pagina's hieronder zijn nog work in progess en worden verborgen voor de demo -->
+    <!-- <local:PlantPage IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Plant-icon.png"/> -->
+    <!-- <local:ProfilePage IconImageSource="https://i.ibb.co/KFFSLw7/user.png"/> -->
    
 </TabbedPage>

@@ -28,8 +28,6 @@ namespace GreenHealth_Mobile_App
             
             resultText.Text = result.Species;
             resultConfidence.Text = "Week " + result.GrowthStage + " met " + Math.Round((decimal)result.Accuracy, 2) + "% zekerheid";          
-        }
-
-        
+        }  
     }
 }

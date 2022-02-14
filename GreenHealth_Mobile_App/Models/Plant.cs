@@ -25,9 +25,4 @@ namespace GreenHealth_Mobile_App.Models
         public string ImagePath { get; set; } = null;
         public Plot Plot { get; set; } = null;
 	}
-
-    /* public class PlantResponse
-    {
-        public List<Plant> Plants { get; set; }
-    }*/
 }

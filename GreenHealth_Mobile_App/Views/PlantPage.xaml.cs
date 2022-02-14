@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+// De code voor deze pagina is in place, maar werkt nog niet voor onbekende redenen.
+
 namespace GreenHealth_Mobile_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -33,12 +35,5 @@ namespace GreenHealth_Mobile_App
             Result result = await restService.GetResult(plant.Id);
             await Navigation.PushAsync(new PlantDetailPage(plant, result));
         }
-
-        /*private async void tempNavButton_Clicked(object sender, EventArgs e)
-        {
-            Plant plant = new Plant(1);
-            Result result = await restService.GetResult(plant.Id);
-            await Navigation.PushAsync(new PlantDetailPage(plant, result));
-        }*/
     }
 }
